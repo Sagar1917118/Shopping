@@ -10,7 +10,10 @@ export const ProductSlice=createSlice({
             else
                 return products.filter((ele)=>ele.category==action.payload);
         },
+        sortProductData:(state,action)=>{
+            return  [...state].sort((a, b) => a.price - b.price);
+        }
     }
 });
-export const {updateProductData}=ProductSlice.actions;
+export const {updateProductData,sortProductData}=ProductSlice.actions;
 export default ProductSlice.reducer;
