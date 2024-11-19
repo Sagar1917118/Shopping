@@ -11,7 +11,10 @@ export const ProductSlice=createSlice({
                 return products.filter((ele)=>ele.category==action.payload);
         },
         sortProductData:(state,action)=>{
-            return  [...state].sort((a, b) => a.price - b.price);
+            if(action==1)
+                return  [...state].sort((a, b) => a.price - b.price);
+            else    
+                return  [...state].sort((b, a) => a.price - b.price);
         }
     }
 });

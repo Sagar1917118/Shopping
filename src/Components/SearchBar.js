@@ -1,7 +1,10 @@
 import { FaSearch } from "react-icons/fa";
 import { products } from "../utils/products";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 function SearchBar(){
+    const navigate=useNavigate();
+    const [selectedProduct,setSelectedProduct]=useState("");
     const productName = products.map((product) => ({
         name: product.name.toLowerCase(),
         id: product.id,
@@ -12,6 +15,8 @@ function SearchBar(){
         if (searchQuery) {
           const filteredNames = productName.filter((product) =>
             product.name.startsWith(searchQuery.toLowerCase())
+          ||
+          product.name.includes(searchQuery.toLowerCase())
           );
           setRelatedNames(filteredNames);
         } else {
@@ -32,14 +37,15 @@ function SearchBar(){
               <div className=" w-full gap-2 p-1 text-sm flex flex-col absolute left-0 top-9 bg-white z-50 border-l-2 border-r-2 border-b-2">
                { relatedName.map(ele=>{
                     return(
-                        <div className="border-b-2 hover:cursor-pointer" key={ele.id}>{ele.name}</div>
+                        <div onClick={()=>{ navigate(`/view-product/${ele.id}`)}} className="border-b-2 hover:cursor-pointer" key={ele.id}>{ele.name}</div>
                     )
                 })
                }
             </div>
             } 
         </div>
-        <FaSearch className="text-2xl text-blue-500 cursor-pointer hover:scale-105"/>
+        <FaSearch onClick={()=>{
+        }}className="text-2xl text-blue-500 cursor-pointer hover:scale-105"/>
       </div>
     )
 }
