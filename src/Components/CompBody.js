@@ -44,8 +44,8 @@ export default function CompBody(){
              (
                 <>
                 <div className="flex-col sm:flex-row flex gap-1">
-                    <button onClick={()=>{dispatch(sortProductData(1))}}className="p-2 my-2 bg-blue-300 hover:bg-blue-500 font-bold text-white rounded-lg  ">Increasing Price</button>
-                    <button onClick={()=>{dispatch(sortProductData(0))}}className="p-2 my-2 bg-blue-300 hover:bg-blue-500 font-bold text-white rounded-lg  ">Descresing Price</button>
+                    <button onClick={()=>{dispatch(sortProductData("1"))}}className="p-2 my-2 bg-blue-300 hover:bg-blue-500 font-bold text-white rounded-lg  ">Increasing Price</button>
+                    <button onClick={()=>{dispatch(sortProductData("2"))}}className="p-2 my-2 bg-blue-300 hover:bg-blue-500 font-bold text-white rounded-lg  ">Descresing Price</button>
                 </div>
                 <div className="w-[90%] flex flex-wrap justify-center items-start gap-3 p-4">
                     {apiData.map((element)=>{

@@ -11,10 +11,10 @@ export const ProductSlice=createSlice({
                 return products.filter((ele)=>ele.category==action.payload);
         },
         sortProductData:(state,action)=>{
-            if(action==1)
+            if(action.payload=="1")
                 return  [...state].sort((a, b) => a.price - b.price);
             else    
-                return  [...state].sort((b, a) => a.price - b.price);
+                return  [...state].sort((a, b) => (b.price - a.price));
         }
     }
 });
