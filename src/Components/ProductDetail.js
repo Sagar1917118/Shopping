@@ -6,6 +6,7 @@ import {add,remove,addItem,removeItem} from '../redux/slices/cartSlice'
 import {AiOutlinePlusCircle} from 'react-icons/ai';
 import {AiOutlineMinusCircle} from 'react-icons/ai';
 import { IoArrowBackSharp } from "react-icons/io5";
+import toast from "react-hot-toast";
 const ProductDetail = () => {
     const { id } = useParams();
     const [selectedProduct,setSelectedProduct]=useState();
@@ -29,9 +30,11 @@ const ProductDetail = () => {
         return flag;
     }
     function RemoveItemToCard(){
+        toast.error("Item deleted successfully");
         dispatch(remove(selectedProduct[0].id));
     }
     function AddItemToCart(data){ 
+        toast.success("Item added successfully");
         console.log(data);
         dispatch(add(data));
     }
